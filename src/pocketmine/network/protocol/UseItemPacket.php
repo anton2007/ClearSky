@@ -4,9 +4,9 @@ namespace pocketmine\network\protocol;
 #include <rules/DataPacket.h>
 
 
+
 class UseItemPacket extends DataPacket{
 	const NETWORK_ID = Info::USE_ITEM_PACKET;
-
 	public $x;
 	public $y;
 	public $z;
@@ -18,7 +18,6 @@ class UseItemPacket extends DataPacket{
 	public $posX;
 	public $posY;
 	public $posZ;
-
 	public function decode(){
 		$this->x = $this->getInt();
 		$this->y = $this->getInt();
@@ -30,12 +29,15 @@ class UseItemPacket extends DataPacket{
 		$this->posX = $this->getFloat();
 		$this->posY = $this->getFloat();
 		$this->posZ = $this->getFloat();
-
+	}
+	public function encode(){
+	}
+	
+	public function decodeAdditional($protocol){
+		if($protocol == 70){
+			$this->getInt();
+		}
 		$this->item = $this->getSlot();
 	}
-
-	public function encode(){
-
-	}
-
+	
 }
