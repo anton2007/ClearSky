@@ -4,7 +4,6 @@ namespace pocketmine\network\protocol;
 #include <rules/DataPacket.h>
 
 
-
 class UseItemPacket extends DataPacket{
 	const NETWORK_ID = Info::USE_ITEM_PACKET;
 	public $x;
